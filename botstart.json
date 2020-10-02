@@ -1,0 +1,18 @@
+{
+  "apps":[
+      {
+          "name"                  : "hubot",
+          "cwd"                   : "/home/hubot",
+          "args"                  : ["-n", "hubot", "-a", "slack"],
+          "script"                : "bin/hubot",
+          "exec_interpreter"      : "bash",
+          "autorestart"           : true,
+          "vizion"                : false,
+          "env": {
+              "NODE_ENV"               : "production",
+              "HUBOT_SLACK_TOKEN"      : "",
+              "PORT"                   : "8080"
+          }
+      }
+  ]
+}
