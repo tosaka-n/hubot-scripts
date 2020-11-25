@@ -44,7 +44,7 @@ module.exports = async robot => {
         robot.send({ room }, `:tada: ${convert.user.real_name}さんがjoinしました :tada:`);
       }
     } else if (convert.type === "apps_installed") {
-      if (convert.app.is_workflow_bot) {
+      if (convert.is_workflow_bot) {
         robot.send({ room }, `${convert.app.name}ってワークフローを設定`);
       } else {
         robot.send({ room }, `<${SLACK_URL}/apps/${convert.app.id}|${convert.app.name}>ってアプリをインストゥロール！`);
