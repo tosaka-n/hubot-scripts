@@ -1,8 +1,5 @@
 const fetch = require("node-fetch");
 const JSDOM = require('jsdom').JSDOM;
-const values = ["time", "temp", "precipitation", "direction", "speed", "sunshine_hours", "humidity", "barometric_pressure"];
-const val_ja = ["時刻", "気温", "降水量", "風向", "風速", "日照時間", "湿度", "気圧"];
-const units = ["時", "℃", "mm", "", "m/s", "h", "%", "hPa"];
 async function repro(url) {
   const response = await fetch(url);
   const text = await response.text();
@@ -13,6 +10,9 @@ function arr2obj(arr, key) {
   return arr.reduce((p, c) => ({ ...p, [c[key]]: c }), {})
 }
 async function getTemps() {
+  const values = ["time", "temp", "precipitation", "direction", "speed", "sunshine_hours", "humidity", "barometric_pressure"];
+  const val_ja = ["時刻", "気温", "降水量", "風向", "風速", "日照時間", "湿度", "気圧"];
+  const units = ["時", "℃", "mm", "", "m/s", "h", "%", "hPa"];
   const document = await repro('https://www.jma.go.jp/jp/amedas_h/today-44132.html');
   let time = new Date().getHours() + 2 + 9;
   if (new Date().getMinutes() < 10) { time--; }
